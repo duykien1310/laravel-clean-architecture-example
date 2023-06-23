@@ -26,10 +26,10 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $product = new Product;
-        $product->product_name = $request->product_name;
-        $product->product_description = $request->product_description;
-        $product->quantity_in_stock = $request->quantity_in_stock;
-        $product->buy_price = $request->buy_price;
+        $product->product_name = $request->productName;
+        $product->product_description = $request->productDescription;
+        $product->quantity_in_stock = $request->quantityInStock;
+        $product->buy_price = $request->buyPrice;
         $product->availability = $request->availability;
         $product = $this->productService->create($product);
         return response()->json($product, 201);
@@ -39,9 +39,11 @@ class ProductController extends Controller
     {
         $id = $request->input('productId');
         $product = new Product;
-        $product->name = $request->name;
-        $product->password = $request->password;
-        $product->email = $request->email;
+        $product->product_name = $request->productName;
+        $product->product_description = $request->productDescription;
+        $product->quantity_in_stock = $request->quantityInStock;
+        $product->buy_price = $request->buyPrice;
+        $product->availability = $request->availability;
 
         $product = $this->productService->update($id, $product);
         if ($product) {
@@ -50,8 +52,9 @@ class ProductController extends Controller
         return response()->json(['error' => 'Product not found.'], 404);
     }
 
-    public function destroy(int $id)
+    public function destroy(Request $request)
     {
+        $id = $request->input('productId');
         $result = $this->productService->delete($id);
         if ($result) {
             return response()->json(['success' => true]);

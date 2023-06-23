@@ -4,6 +4,7 @@ use App\Http\Controllers\ProductController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\OrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,9 +24,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 // User
 Route::prefix('user')->group(function () {
     Route::post('/', [UserController::class, 'store']);
-    Route::get('/{id}', [UserController::class, 'show']);
-    Route::put('/{id}', [UserController::class, 'update']);
-    Route::delete('/{id}', [UserController::class, 'destroy']);
+    Route::get('/', [UserController::class, 'show']);
+    Route::put('/', [UserController::class, 'update']);
+    Route::delete('/', [UserController::class, 'destroy']);
 });
 
 // Product
@@ -33,5 +34,10 @@ Route::prefix('product')->group(function () {
     Route::post('', [ProductController::class, 'store']);
     Route::get('', [ProductController::class, 'show']);
     Route::put('', [ProductController::class, 'update']);
-    Route::delete('/{id}', [ProductController::class, 'destroy']);
+    Route::delete('', [ProductController::class, 'destroy']);
+});
+
+// Order
+Route::prefix('order')->group(function () {
+    Route::post('', [OrderController::class, 'placeAnOrder']);
 });

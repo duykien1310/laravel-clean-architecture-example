@@ -22,7 +22,7 @@ class UserService implements UserUseCase
 
     public function create(User $user): User
     {
-        return $this->userRepository->create($user);
+        return $this->userRepository->save($user);
     }
 
     public function update(int $id, User $data): User
@@ -42,7 +42,7 @@ class UserService implements UserUseCase
         }
 
         if ($user) {
-            return $this->userRepository->update($user);
+            return $this->userRepository->save($user);
         }
         return null;
     }

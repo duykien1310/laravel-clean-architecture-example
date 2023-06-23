@@ -20,13 +20,7 @@ class ProductRepository implements ProductRepositoryInterface
         return Product::find($id);
     }
 
-    public function create(Product $product): Product
-    {
-        $product->save();
-        return $product;
-    }
-
-    public function update(Product $product): Product
+    public function save(Product $product): Product
     {
         $product->save();
         return $product;

@@ -12,13 +12,7 @@ class UserRepository implements UserRepositoryInterface
         return User::find($id);
     }
 
-    public function create(User $user): User
-    {
-        $user->save();
-        return $user;
-    }
-
-    public function update(User $user): User
+    public function save(User $user): User
     {
         $user->save();
         return $user;

@@ -15,8 +15,9 @@ class UserController extends Controller
         $this->userService = $userService;
     }
 
-    public function show(int $id)
+    public function show(Request $request)
     {
+        $id = $request->input('userId');
         $user = $this->userService->getById($id);
         return response()->json($user);
     }
@@ -31,8 +32,9 @@ class UserController extends Controller
         return response()->json($user, 201);
     }
 
-    public function update(Request $request, int $id)
+    public function update(Request $request)
     {
+        $id = $request->input('userId');
         $user = new User;
         $user->name = $request->name;
         $user->password = $request->password;
@@ -45,8 +47,9 @@ class UserController extends Controller
         return response()->json(['error' => 'User not found.'], 404);
     }
 
-    public function destroy(int $id)
+    public function destroy(Request $request)
     {
+        $id = $request->input('userId');
         $result = $this->userService->delete($id);
         if ($result) {
             return response()->json(['success' => true]);
