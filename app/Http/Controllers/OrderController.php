@@ -25,8 +25,8 @@ class OrderController extends Controller
         $order->comment = $request->comment;
         $order->status = $request->status;
 
-        $orderDetails = $request->orderDetails;
+        $orderItems = $request->orderItems;
 
-        $this->orderService->placeAnOrder($order, $orderDetails);
+        $this->orderService->placeAnOrder($order, $orderItems);
     }
 }
