@@ -40,4 +40,5 @@ Route::prefix('product')->group(function () {
 // Order
 Route::prefix('order')->group(function () {
     Route::post('', [OrderController::class, 'placeAnOrder']);
+    Route::get('/user', [OrderController::class, 'getEagerOrder']);
 });

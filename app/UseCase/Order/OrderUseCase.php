@@ -7,4 +7,5 @@ use App\Models\Order;
 interface OrderUseCase
 {
     public function placeAnOrder(Order $order, $orderDetails);
+    public function getEagerOrder(int $orderId);
 }

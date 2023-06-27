@@ -22,4 +22,10 @@ class OrderRepository implements OrderRepositoryInterface
     {
         return $order->delete();
     }
+
+    public function getEagerOrder(int $orderId)
+    {
+        $order = Order::with('user', 'orderDetails')->find($orderId);
+        return $order;
+    }
 }

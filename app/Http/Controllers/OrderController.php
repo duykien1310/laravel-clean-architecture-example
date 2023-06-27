@@ -29,4 +29,10 @@ class OrderController extends Controller
 
         $this->orderService->placeAnOrder($order, $orderItems);
     }
+
+    public function getEagerOrder(Request $request)
+    {
+        $orderId = $request->input('orderId');
+        return $this->orderService->getEagerOrder($orderId);
+    }
 }

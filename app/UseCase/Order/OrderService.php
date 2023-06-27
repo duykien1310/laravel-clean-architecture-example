@@ -57,4 +57,9 @@ class OrderService implements OrderUseCase
             return false;
         }
     }
+
+    public function getEagerOrder(int $orderId)
+    {
+        return $this->orderRepository->getEagerOrder($orderId);
+    }
 }
