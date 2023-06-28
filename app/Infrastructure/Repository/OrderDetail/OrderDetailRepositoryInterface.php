@@ -7,6 +7,6 @@ use App\Models\OrderDetail;
 interface OrderDetailRepositoryInterface
 {
     public function getById(int $id): ?OrderDetail;
-    public function save(OrderDetail $orderDetail): OrderDetail;
+    public function save(OrderDetail $orderDetail);
     public function delete(OrderDetail $orderDetail): bool;
 }

@@ -1,11 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Order;
 
 use Illuminate\Http\Request;
 use App\Models\Order;
-use App\Models\OrderDetail;
 use App\UseCase\Order\OrderUseCase;
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Response;
+
 
 class OrderController extends Controller
 {

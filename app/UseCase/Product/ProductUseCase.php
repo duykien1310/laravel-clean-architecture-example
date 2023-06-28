@@ -13,5 +13,5 @@ interface ProductUseCase
 
     public function update(int $id, Product $data): Product;
 
-    public function delete(int $id): bool;
+    public function delete(int $id);
 }

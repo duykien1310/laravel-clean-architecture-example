@@ -55,7 +55,7 @@ class ProductService implements ProductUseCase
         return null;
     }
 
-    public function delete(int $id): bool
+    public function delete(int $id)
     {
         $product = $this->productRepository->getById($id);
         if ($product) {

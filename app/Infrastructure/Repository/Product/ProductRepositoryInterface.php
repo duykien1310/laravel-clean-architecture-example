@@ -10,7 +10,7 @@ interface ProductRepositoryInterface
 
     public function getById(int $id): ?Product;
 
-    public function save(Product $product): Product;
+    public function save(Product $product);
 
-    public function delete(Product $product): bool;
+    public function delete(Product $product);
 }

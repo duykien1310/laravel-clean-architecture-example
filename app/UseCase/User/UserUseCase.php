@@ -7,7 +7,7 @@ use App\Models\User;
 
 interface UserUseCase
 {
-    public function getById(int $id): ?User;
+    public function getById(int $id);
 
     public function create(User $user): User;
 

@@ -6,9 +6,9 @@ use App\Models\User;
 
 interface UserRepositoryInterface
 {
-    public function getById(int $id): ?User;
+    public function getById(int $id);
 
-    public function save(User $user): User;
+    public function save(User $user);
 
-    public function delete(User $user): bool;
+    public function delete(User $user);
 }

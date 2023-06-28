@@ -15,9 +15,14 @@ class UserService implements UserUseCase
         $this->userRepository = $userRepository;
     }
 
-    public function getById(int $id): ?User
+    public function getById(int $id)
     {
-        return $this->userRepository->getById($id);
+        $user = $this->userRepository->getById($id);
+        if (!$user) {
+            return false;
+        }
+
+        return $user;
     }
 
     public function create(User $user): User

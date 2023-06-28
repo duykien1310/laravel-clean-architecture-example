@@ -12,10 +12,9 @@ class OrderDetailRepository implements OrderDetailRepositoryInterface
         return OrderDetail::find($id);
     }
 
-    public function save(OrderDetail $orderDeOrderDetail): OrderDetail
+    public function save(OrderDetail $orderDeOrderDetail)
     {
-        $orderDeOrderDetail->save();
-        return $orderDeOrderDetail;
+        return $orderDeOrderDetail->save();
     }
 
     public function delete(OrderDetail $orderDeOrderDetail): bool

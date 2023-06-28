@@ -1,10 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\User;
 
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\UseCase\User\UserUseCase;
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Response;
 
 class UserController extends Controller
 {
@@ -19,7 +21,18 @@ class UserController extends Controller
     {
         $id = $request->input('userId');
         $user = $this->userService->getById($id);
-        return response()->json($user);
+        if (!$user) {
+            return response()->json(['error' => 'User not found.'], 404);
+        }
+        $data = Common::convertUserModelToPresenter($user);
+
+        $response = [
+            'status' => strval(Response::HTTP_OK),
+            'message' => 'SUCCESS',
+            'results' => $data
+        ];
+
+        return response()->json($response);
     }
 
     public function store(Request $request)

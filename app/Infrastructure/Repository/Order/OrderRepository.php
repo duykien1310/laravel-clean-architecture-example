@@ -12,10 +12,9 @@ class OrderRepository implements OrderRepositoryInterface
         return Order::find($id);
     }
 
-    public function save(Order $order): Order
+    public function save(Order $order)
     {
-        $order->save();
-        return $order;
+        return $order->save();
     }
 
     public function delete(Order $order): bool
