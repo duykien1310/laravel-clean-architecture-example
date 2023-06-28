@@ -7,6 +7,10 @@ use App\Models\User;
 use App\UseCase\User\UserUseCase;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Password;
+use Laravel\Sanctum\PersonalAccessTokenFactory;
+use Laravel\Sanctum\Sanctum;
 
 class UserController extends Controller
 {
@@ -68,5 +72,26 @@ class UserController extends Controller
             return response()->json(['success' => true]);
         }
         return response()->json(['error' => 'User not found.'], 404);
+    }
+
+    public function login(Request $request)
+    {
+        $credentials = $request->only('email', 'password');
+
+        if (Auth::attempt($credentials)) {
+            $user = Auth::user();
+            $token = $user->createToken('API Token')->plainTextToken;
+
+            return response()->json(['token' => $token], 200);
+        } else {
+            return response()->json(['error' => 'Unauthorized'], 401);
+        }
+    }
+
+    public function logout(Request $request)
+    {
+        $request->user()->currentAccessToken()->delete();
+
+        return response()->json(['message' => 'Logged out successfully'], 200);
     }
 }

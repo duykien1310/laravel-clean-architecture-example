@@ -42,3 +42,8 @@ Route::prefix('order')->group(function () {
     Route::post('', [OrderController::class, 'placeAnOrder']);
     Route::get('/user', [OrderController::class, 'getEagerOrder']);
 });
+
+Route::prefix('auth')->group(function () {
+    Route::post('/login', [UserController::class, 'login']);
+    Route::post('/logout', [UserController::class, 'logout'])->middleware('auth:api');
+});
