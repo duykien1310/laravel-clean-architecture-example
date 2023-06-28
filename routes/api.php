@@ -44,6 +44,8 @@ Route::prefix('order')->group(function () {
 });
 
 Route::prefix('auth')->group(function () {
-    Route::post('/login', [UserController::class, 'login']);
-    Route::post('/logout', [UserController::class, 'logout'])->middleware('auth:api');
+    Route::post('login', 'login');
+    Route::post('register', 'register');
+    Route::post('logout', 'logout');
+    Route::post('refresh', 'refresh');
 });
