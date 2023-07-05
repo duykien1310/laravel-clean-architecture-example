@@ -43,9 +43,9 @@ Route::prefix('order')->group(function () {
     Route::get('/user', [OrderController::class, 'getEagerOrder']);
 });
 
-Route::prefix('auth')->group(function () {
-    Route::post('login', 'login');
-    Route::post('register', 'register');
-    Route::post('logout', 'logout');
-    Route::post('refresh', 'refresh');
-});
+// Route::prefix('auth')->group(function () {
+//     Route::post('login', 'login');
+//     Route::post('register', 'register');
+//     Route::post('logout', 'logout');
+//     Route::post('refresh', 'refresh');
+// });
